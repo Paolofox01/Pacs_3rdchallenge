@@ -1,0 +1,3 @@
+The code is sometimes more C than C++ (calloc?). Some comemnts in the text. Nice the idea oc the script for the scalability, it would have been nice to have the results stored in a file to have the possibility to understand how thigs were going. Alsoi becouse no comments are reported in the readme file.
+
+

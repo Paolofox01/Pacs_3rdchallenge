@@ -1,4 +1,4 @@
-#include "laplace_solver.h"
+#include "laplace_solver.hpp" //@note it is called laplace_solver.hpp!
 
 
 /**
@@ -16,6 +16,9 @@
  * @param num_threads Numero di thread OpenMP
  * @param from_script Se il codice è stato lanciato da uno script
  */
+//@note why pointers. In C++ we can use references, which are more readable and safer
+// also use std::function instead a function pointer 
+// Why not making a class, with a method solve, and the data as members?
 void laplace_solver(double* U, double* U_new, int n, double h, double (*f)(double, double), int rank, int size, double tol, int max_iter, int num_threads, bool from_script){
     
     int rem = n % size;
@@ -95,6 +98,9 @@ void update_grid(double* U, double* U_new, int n, double h, double (*f)(double, 
     }
 
     if (rank > 0 && rank < size - 1) {
+        //@note avoit pow for small integer exponents, use multiplication: pow(h,2) -> h*h
+        // Even better, precompute h*h: it is a constant inside the loop. double h2 = h*h;
+        // Also, if you use a local variable where you precompute the values of f at the node, you avoid multiple calls to the function
         #pragma omp parallel for
         for (int i = start_row; i < end_row; ++i) {
             for (int j = 1; j < n - 1; ++j) {

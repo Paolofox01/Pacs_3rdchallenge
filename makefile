@@ -6,7 +6,8 @@ PACS_ROOT?=../pacs-examples/Examples
 
 export DOXYFILE=./Doxyfile
 
-CPPFLAGS ?= -fopenmp -O3 -Wall -Wno-conversion-null -Wno-deprecated-declarations -pedantic -I. -I$(PACS_ROOT)/src/Utilities/ -I$(PACS_ROOT)/include/  -I/mnt/wslg/distro/u/sw/toolchains/gcc-glibc/11.2.0/pkgs/eigen/3.3.9/include/eigen3
+#note : use variables to indicate incldue paths and libraries, it is simpler to change them in the future
+CPPFLAGS ?= -fopenmp -O3 -Wall -Wno-conversion-null -Wno-deprecated-declarations -pedantic -I. -I$(PACS_ROOT)/src/Utilities/ -I$(PACS_ROOT)/include/  -I/usr/local/include/eigen3/
 
 LDFLAGS ?= -L$(PACS_ROOT)/src/Utilities/ -L$(PACS_ROOT)/lib/
 LIBS  ?= -lpacs -lmuparser
