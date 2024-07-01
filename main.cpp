@@ -1,4 +1,4 @@
-#include "laplace_solver.h"
+#include "laplace_solver.hpp"
 #include <mpi.h>
 #include <omp.h>
 #include <cmath>
